@@ -1,0 +1,5 @@
+rootProject.name = 'code-ch'
+include 'generic-root'
+include 'class-hierarchy'
+include 'password-validator'
+include 'tennis-tournament'

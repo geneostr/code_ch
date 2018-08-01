@@ -1,0 +1,41 @@
+apply plugin: 'base'
+
+ext{
+    lombokVersion='1.18.0'
+    junitVersion='4.12'
+    springBootVersion='2.0.3.RELEASE'
+    commonLangVersion='3.7'
+}
+
+
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/release" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://repo.spring.io/snapshot" }
+        jcenter()
+    }
+
+
+    dependencies {
+        compile("org.apache.commons:commons-lang3:${commonLangVersion}")
+        compileOnly("org.projectlombok:lombok:${lombokVersion}")
+        testCompile("junit:junit:${junitVersion}")
+    }
+
+}
+
+project(':password-validator'){
+
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.8'
+}
